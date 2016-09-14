@@ -1,0 +1,3 @@
+<ul style="padding: 0" ng-model="$ctrl.starRating" ng-change="$ctrl.change($ctrl.starRating)" >
+    <li role="button" aria-label="{{star.index}} star rating" ng-repeat="star in $ctrl.stars" style="color: #FFD700;" class="glyphicon" ng-class="{true: 'glyphicon-star-empty', false: 'glyphicon-star'}[star.empty]" ng-click="$ctrl.click(star.index)"></li>
+</ul>

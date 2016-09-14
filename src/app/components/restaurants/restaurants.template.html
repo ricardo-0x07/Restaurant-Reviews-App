@@ -1,0 +1,19 @@
+<section class="panel panel-default" id='restaurants' aria-labelledby="reviewsSectionHeading" style="padding-top: 30px; width: 100%;">
+  <div class='panel-heading card-panel-heading'>
+    <h2 id="reviewsSectionHeading">Restaurant Reviews</h2>        
+  </div>
+  <div class="panel-body card container">
+    <div>
+      <div class='row'>
+        <div class='col-xs-12'>
+          <label>Search
+            <input autofocus="" role="search" ng-model="$ctrl.query" type='text' class='form-control' placeholder='Search Restaurants'></input>
+          </label>
+        </div>
+      </div>
+      <div class='row' >
+        <restaurant-card ng-repeat="rest in $ctrl.data | filter:$ctrl.query | orderBy:rest.name track by rest.id" class="col-xs-12 col-sm-6 col-md-4" restaurant="rest"></restaurant-card>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+      <div>
+        <div class="panel panel-default">
+          <div class='panel-heading projectBg'>
+            <h3 class="panel-title">restaurant: {{$ctrl.restaurant.name}}</h3>
+          </div>
+          <div class="panel-body">
+            <p class="list-group-item" text="">Description: {{$ctrl.restaurant.description}}</p>
+          </div>
+          <div class="panel-body">
+            <a ui-sref="updateProject({restaurant: $ctrl.restaurant})" ng-show="$ctrl.can('update_project')">
+              <paper-button >Update</paper-button>
+            </a>
+            <a ui-sref="projectJobs({projectId: $ctrl.restaurant.id})">
+              <paper-button>Jobs</paper-button>
+            </a> 
+            <a  ui-sref="newMeasurement({measurement: {id: 'new', restaurant: $ctrl.restaurant.id}})" ng-show=" $ctrl.showMeasureBtn()">
+              <paper-button>Measure</paper-button>
+            </a>
+            <a ui-sref="newRequestPerformanceValidation({validationRequest: {id: 'new', requestor: $ctrl.userId, projectId: $ctrl.restaurant.id}})" ng-hide="$ctrl.can('create_measurement')">
+              <paper-button>Feedback</paper-button>
+            </a>
+            <a ui-sref="projectIssueCards({jobs: $ctrl.restaurant.jobs, projectId: $ctrl.restaurant.id})">
+              <paper-button>Issues</paper-button>
+            </a>
+            <paper-icon-button ng-model="collapsed" ng-click="collapsed=!collapsed" icon="hardware:keyboard-arrow-up" title="more info" id="icon_button" style="float:right;">
+            </paper-icon-button>
+            <div ng-show="collapsed" id="more-info-{{$ctrl.restaurant.id}}" style="width:100%;">
+                <span ng-if="$ctrl.restaurant.plannedStart" raised class="list-group-item">Start: {{$ctrl.restaurant.plannedStart}}</span>
+                <span ng-if="$ctrl.restaurant.duration" raised class="list-group-item">Duration: {{$ctrl.restaurant.duration}}</span>
+                <span ng-if="$ctrl.restaurant.value" raised class="list-group-item">Value: $ {{$ctrl.restaurant.value}}</span>
+                <span ng-if="$ctrl.restaurant.service.name" raised class="list-group-item">Service: {{$ctrl.restaurant.service.name}}</span>
+                <span ng-if="$ctrl.restaurant.project_status.description" raised class="list-group-item">Status: {{$ctrl.restaurant.project_status.description}}</span>
+                <span ng-if="$ctrl.restaurant.provider.name" raised class="list-group-item">Provider: {{$ctrl.restaurant.provider.name}}</span>
+                <span ng-if="$ctrl.restaurant.address" raised class="list-group-item">Location: {{$ctrl.restaurant.address}}</span>
+                <span ng-if="$ctrl.restaurant.measurement.id" raised class="list-group-item"><h4>PERFORMANCE</h4></span>
+                <span ng-if="$ctrl.restaurant.measurement.costVariance" raised class="list-group-item">Cost Variance: US$ {{$ctrl.restaurant.measurement.costVariance}}</span>
+                <span ng-if="$ctrl.restaurant.measurement.scheculeVariance" raised class="list-group-item">Schedule Variance: {{$ctrl.restaurant.measurement.scheculeVariance}} days</span>
+                <span ng-if="$ctrl.restaurant.measurement.reworkTimeImpactMin" raised class="list-group-item">Min Ave Daily Rework Time Impact: {{$ctrl.restaurant.measurement.reworkTimeImpactMin}} hours</span>
+                <span ng-if="$ctrl.restaurant.measurement.reworkTimeImpactMax" raised class="list-group-item">Max Ave Daily Rework Time Impact: {{$ctrl.restaurant.measurement.reworkTimeImpactMax}} hours</span>
+                <span ng-if="$ctrl.restaurant.measurement.reworkCostImpactMin" raised class="list-group-item">Min Ave Daily Rework Cost Impact: US$ {{$ctrl.restaurant.measurement.reworkCostImpactMin}}</span>
+                <span ng-if="$ctrl.restaurant.measurement.reworkCostImpactMax" raised class="list-group-item">Max Ave Daily Rework Cost Impact: US$ {{$ctrl.restaurant.measurement.reworkCostImpactMax}}</span>
+                <span ng-if="$ctrl.restaurant.measurement.variationClaimsMin" raised class="list-group-item">Total Min Variation Claim: US$ {{$ctrl.restaurant.measurement.variationClaimsMin}}</span>
+                <span ng-if="$ctrl.restaurant.measurement.variationClaimsMax" raised class="list-group-item">Total Max Variation Claim: US$ {{$ctrl.restaurant.measurement.variationClaimsMax}}</span>
+            </div>
+          </div>
+        </div>        
+      </div>  
+
+
