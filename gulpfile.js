@@ -63,10 +63,10 @@ gulp.task('styles', function() {
     }))
     .pipe(plugins.sourcemaps.write('./'))
     .pipe(gulp.dest('dist/css'))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
-gulp.task('browserSync', function() {
+function browserSyncInit() {
     browserSync.init({
         notify: false,
         files: [
@@ -82,7 +82,9 @@ gulp.task('browserSync', function() {
             }
         }
     });
-});
+}
+
+gulp.task('browserSync', browserSyncInit);
 
 gulp.task('watch', ['browserSync'], function() {
     gulp.watch('src/assets/sass/**/*.scss', ['styles']);
@@ -180,6 +182,21 @@ function bundle() {
     .pipe(browserSync.stream());
 }
 
+// Build the "dist" folder by running all of the above tasks
+gulp.task('build', function() {
+    runSequence('clean', ['styles', 'lint', 'js', 'copy', 'vulcanize-elems']);
+});
+
 gulp.task('serve', function(callback) {
     runSequence('clean', ['styles', 'lint', 'js', 'copy', 'vulcanize-elems'], ['browserSync', 'watch'], callback);
+});
+
+// Build the site, serve files, and watch for file changes
+gulp.task('default', ['serve']);
+
+// starts to serve production files
+// runs the build task before, 
+// and serves the dist folder does not watch for file changes
+gulp.task('serve:dist', function() {
+    runSequence('clean', ['styles', 'lint', 'js', 'copy', 'vulcanize-elems'], ['browserSync']);
 });

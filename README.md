@@ -8,7 +8,8 @@
 # Installation
 
 1. Fork the repository, download it and run both 'npm install' and 'bower install' form the application root.
-2. The run the "gulp serve" command from the root directory (the src folder) in the command line as described below on running the build process step 1.
+2. The run the "gulp" command from the root directory (the src folder) in the command line as described below on running the build process step 1.
+3. You may use "gulp serve:dist" to serve distribution files.
 
 ## Usage
 1. After the application has been loaded successfully, use the tabs to navigate between the dashboards.
@@ -29,7 +30,6 @@
 ## Credits
 
 1. The udacity nano degree team provided the guidance and training i required to complete the initial version of this project.
-2. Note: the build process serves data form the following path: /dist/data/*.*.
 
 
 ## License
@@ -60,17 +60,9 @@ SOFTWARE.
 1. 
 
 
-# How to set up the build process
-
-1. Install [npm](https://www.npmjs.com/), [bower](http://bower.io/) and [gulp](http://gulpjs.com/) if you haven't already
-2. Run `npm install`
-3. Run `bower install`
-4. Run the `gulp` command
-5. As you make your edits to the files in `src/`, use `gulp watch` to watch for changes and rebuild to `dist/`.
-
 # Running the Build Process
 
-1. Once the build process has been set up as described above navigate to the root directory of the project and type "gulp serve" and press enter to run the default task this will open the application in the browser.
+1. Once the build process has been set up as described above navigate to the root directory of the project and type "gulp" and press enter to run the default task this will open the application in the browser.
 2. While the application is running via the build process several gulp tasks will be watching for changes and errors in the css, js, html and spec files and update the distribution files automatically. The browser will be refreshed for changes to the index.html.
 
 #Versioning

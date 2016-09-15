@@ -563,6 +563,10 @@ paper-card.form {
   */
   #no-more-tables td:before { content: attr(data-title); }
 }
+
+.lg.glyphicon {
+    font-size: 25px;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
