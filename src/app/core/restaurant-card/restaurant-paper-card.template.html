@@ -13,7 +13,7 @@
             </paper-icon-button><br/>
             <div id="more-info-{{$ctrl.restaurant.id}}" style="width: 100%; display: none; padding-top: 16px;" >
               
-              <h4><span class="label label-info" style="width: 100%;">Recommend {{$ctrl.restaurant.name}}</span></h4>
+              <h4><span class="label label-info" style="width: 100%; color: #333;">Recommend {{$ctrl.restaurant.name}}</span></h4>
               <div class="list-group-item">
                 <form style="width: 100%; margin: auto;">
                   <star-rating star-rating="$ctrl.newReview.rating" max-star-rating="$ctrl.maxStarRating" rating-changed="$ctrl.update('rating', newRating)" style="width: 100%;"></star-rating>
