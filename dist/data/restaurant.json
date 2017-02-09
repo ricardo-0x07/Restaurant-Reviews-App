@@ -1,0 +1,14 @@
+[
+	{
+		names: '', 
+		photo: null,
+		address: '',
+		open:'',
+		close: '',
+		reviews: {
+			reviewer: '',
+			date: '',
+			comments: ''
+		} 
+	}
+]

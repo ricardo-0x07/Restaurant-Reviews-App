@@ -1,0 +1,47 @@
+        <article class="panel panel-default card" aria-labelledby="sectionHeading_{{$ctrl.restaurant.id}}">
+          <h1 class="panel-title" id="sectionHeading_{{$ctrl.restaurant.id}}">{{$ctrl.restaurant.name}}</h1>
+          <div class='panel-heading card-panel-heading'>
+            <img src="{{$ctrl.restaurant.photo}}" alt="{{$ctrl.restaurant.name}}" class="img-responsive center-block" >
+            </img>
+          </div>
+          <div class="panel-body">
+          <div class="panel-body">
+            <p class="list-group-item" text="">Address: {{$ctrl.restaurant.address}}</p>
+            <p class="list-group-item" text="">Opening: {{$ctrl.restaurant.opening}} - Closing: {{$ctrl.restaurant.closing}}</p>
+          </div>
+            <paper-icon-button ng-model="$ctrl.collapsed" ng-click="$ctrl.collapse()" icon="hardware:keyboard-arrow-up" title="{{$ctrl.restaurant.name}} more info" id="icon_button_{{$ctrl.restaurant.id}}" style="float:right; padding-bottom: 16px;">
+            </paper-icon-button><br/>
+            <div id="more-info-{{$ctrl.restaurant.id}}" style="width: 100%; display: none; padding-top: 16px;" >
+              
+              <h4><span class="label label-info" style="width: 100%; color: #333;">Recommend {{$ctrl.restaurant.name}}</span></h4>
+              <div class="list-group-item">
+                <form style="width: 100%; margin: auto;">
+                  <star-rating star-rating="$ctrl.newReview.rating" max-star-rating="$ctrl.maxStarRating" rating-changed="$ctrl.update('rating', newRating)" style="width: 100%;"></star-rating>
+                  <div class="form-group">
+                    <label for="comments_{{$ctrl.restaurant.id}}" class="form-label">Comments:
+                      <textarea required ng-model="$ctrl.newReview.comments" class="form-control" type="text" name="comments" id="comments_{{$ctrl.restaurant.id}}"></textarea>
+                    </label>                  
+                  </div>              
+                  <div class="form-group">
+                    <label for="name_{{$ctrl.restaurant.id}}" class="form-label">Name:
+                      <input required class="form-control" ng-model="$ctrl.newReview.reviewer" type="text" name="name" id="name_{{$ctrl.restaurant.id}}">
+                    </label>
+                  </div>
+                  <div>
+                    <paper-button raised ng-click="$ctrl.submit()">Submit</paper-button>
+                  </div>              
+                </form>
+              </div>
+              <div class="list-group-item" ng-repeat="review in $ctrl.restaurant.reviews | orderBy:review.reviewer" >
+                <span ng-if="review.reviewer" raised class="list-group-item">Reviewer: {{review.reviewer}}</span>
+                <span ng-if="review.date" raised class="list-group-item">Date: {{review.date}}</span>
+                <span ng-if="review.rating" raised class="list-group-item">Rating: {{review.rating}}
+                  <star-rating-label star-rating="review.rating" max-star-rating="$ctrl.maxStarRating" style="width: 100%;"></star-rating-label>
+                </span>
+                <span ng-if="review.comments" raised class="list-group-item">Comments: {{review.comments}}</span>
+              </div>
+            </div>
+          </div>
+        </article>        
+
+
